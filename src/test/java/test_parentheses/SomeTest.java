@@ -13,7 +13,7 @@ public class SomeTest {
 //    Вывод: 2 - ()
     @Test
     public void firstCase() {
-        assertEquals( "()", searchValidParentheses1("(()"));
+        assertEquals( "2 - ()", searchValidParentheses1("(()"));
     }
 
 //    Пример 2:
@@ -21,7 +21,7 @@ public class SomeTest {
 //    Вывод: 4 - ()()
     @Test
     public void secondCase() {
-        assertEquals("()()", searchValidParentheses1(")()())"));
+        assertEquals("4 - ()()", searchValidParentheses1(")()())"));
     }
 
 //    Пример 3:
@@ -29,7 +29,7 @@ public class SomeTest {
 //    Вывод: 6 - (()())
     @Test
     public void thirdCase() {
-        assertEquals("(()())", searchValidParentheses1(")(()())"));
+        assertEquals("6 - (()())", searchValidParentheses1(")(()())"));
     }
 
 //    Пример 4:
@@ -37,7 +37,7 @@ public class SomeTest {
 //    Вывод: 0
     @Test
     public void fourthCase() {
-        assertEquals("", searchValidParentheses1(")("));
+        assertEquals("0", searchValidParentheses1(")("));
     }
 
 //    Пример 5:
@@ -45,7 +45,7 @@ public class SomeTest {
 //    Вывод: 10 - ()(()())() */
     @Test
     public void fifthCase() {
-        assertEquals("()(()())()", searchValidParentheses1(" ())(()())(()"));
+        assertEquals("10 - ()(()())()", searchValidParentheses1(" ())(()())(()"));
     }
 
 

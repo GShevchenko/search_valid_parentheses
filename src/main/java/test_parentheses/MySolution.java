@@ -35,6 +35,7 @@ public class MySolution {
         Stack<String> leftParentheses = new Stack<>();
         var isOuterGroup = false; // group contains outer parentheses like (()())
         var isFlushed = false;
+        var count = 0;
 
         for (String crudeParenthesis : crudeParentheses) {
             // If all parentheses are extracted from stack, it's necessary to reset values
@@ -42,19 +43,23 @@ public class MySolution {
                 isOuterGroup = false;
                 isFlushed = false;
             }
+            // Put left parenthesis into stack
             if (isLeftParenthesis(crudeParenthesis)) {
                 leftParentheses.add(crudeParenthesis);
                 isOuterGroup = leftParentheses.size() > 1;
                 continue;
             }
-            // If current is ) and stack is still empty
+            // If current bracket is ) and stack is still empty
             if (leftParentheses.size() == 0) {
                 continue;
             }
+
             if (!isOuterGroup) {
                 intermediateResult.append(FULL_PARENTHESES);
                 leftParentheses.pop();
+                count += 2;
             }
+
             if (isOuterGroup) {
                 if (!isFlushed) {
                     finaleResult.append(intermediateResult);
@@ -69,10 +74,11 @@ public class MySolution {
                             .append(intermediateResult)
                             .append(RIGHT_PARENTHESES);
                 }
+                count += 2;
                 leftParentheses.pop();
             }
         }
-        return finaleResult.append(intermediateResult).toString();
+        return count == 0 ? "0" : String.format("%d - %s", count, finaleResult.append(intermediateResult));
     }
 
     public static boolean isLeftParenthesis(String parenthesis) {
